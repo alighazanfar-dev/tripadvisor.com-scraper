@@ -43,8 +43,8 @@ with open(input_file, 'r') as file:
 
 # Activate Test Mode: Limit to first 2 hostels
 if TEST_MODE:
-    hostel_links = hostel_links[:2]
-    print("Test Mode is active: Scraping only the first 2 hostels.")
+    hostel_links = hostel_links[:550]
+    print("Test Mode is active: Scraping only the first 550 hostels.")
 else:
     print(f"Scraping {len(hostel_links)} hostels.")
 
@@ -92,15 +92,15 @@ def scrape_hostel_data(url, row_num):
         service_rating = soup.select_one(".RZjkd:nth-of-type(3) .biKBZ.osNWb").get_text(strip=True) if soup.select_one(".RZjkd:nth-of-type(3) .biKBZ.osNWb") else None
         value_rating = soup.select_one(".RZjkd:nth-of-type(4) .biKBZ.osNWb").get_text(strip=True) if soup.select_one(".RZjkd:nth-of-type(4) .biKBZ.osNWb") else None
 
-        # Extracting price per night (if available)
-        price_per_night = soup.select_one(".PriceWrapper").get_text(strip=True) if soup.select_one(".PriceWrapper") else None
+        # Extracting price per night (updated selector)
+        price_per_night = soup.select_one('div[data-automation="finalPrice"]').get_text(strip=True) if soup.select_one('div[data-automation="finalPrice"]') else None
 
         # Extracting property amenities
         amenities = [item.get_text(strip=True) for item in soup.select(".Jevoh .gFttI")]
         property_amenities = ', '.join(amenities)
 
         # Extracting hotel description with updated selector
-        hotel_description = soup.select_one("div#GAI_REVIEWS .biGQs._P.pZUbB.KxBGd").get_text(separator=' ', strip=True) if soup.select_one("div#GAI_REVIEWS .biGQs._P.pZUbB.KxBGd") else None
+        hotel_description = soup.select_one('div._T.FKffI.TPznB.Ci.ajMTa.Ps.Z.BB').get_text(strip=True) if soup.select_one('div._T.FKffI.TPznB.Ci.ajMTa.Ps.Z.BB') else None
 
         # Extracting reviews with updated selectors
         reviews = [review.get_text(separator=' ', strip=True) for review in soup.select('span[data-automation^="reviewText_"]')]
@@ -150,7 +150,7 @@ def scrape_hostel_data(url, row_num):
         })
         
         # Optional: Implement rate limiting to avoid overloading the server
-        time.sleep(random.uniform(2, 5))  # Sleep for 2 to 5 seconds
+        # time.sleep(random.uniform(0, 3))  # Sleep for 2 to 5 seconds
         
     except Exception as e:
         logging.error(f"Failed to scrape {url}: {e}")

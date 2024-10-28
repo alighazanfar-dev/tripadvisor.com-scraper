@@ -1,1 +1,12 @@
 ERROR:websocket:Connection to remote host was lost. - goodbye
+ERROR:websocket:Connection to remote host was lost. - goodbye
+ERROR:websocket:[WinError 10061] No connection could be made because the target machine actively refused it - goodbye
+ERROR:websocket:Connection to remote host was lost. - goodbye
+ERROR:websocket:Connection to remote host was lost. - goodbye
+ERROR:websocket:Connection to remote host was lost. - goodbye
+ERROR:websocket:[WinError 10061] No connection could be made because the target machine actively refused it - goodbye
+ERROR:websocket:[WinError 10061] No connection could be made because the target machine actively refused it - goodbye
+ERROR:websocket:[WinError 10061] No connection could be made because the target machine actively refused it - goodbye
+ERROR:websocket:[WinError 10061] No connection could be made because the target machine actively refused it - goodbye
+ERROR:websocket:[WinError 10061] No connection could be made because the target machine actively refused it - goodbye
+ERROR:websocket:Connection to remote host was lost. - goodbye

@@ -6,7 +6,7 @@ import time
 driver = Driver()
 
 # Fetch the page content
-url = "https://www.tripadvisor.com/Hotels-g187147-a_travelersChoice.1-Paris_Ile_de_France-Hotels.html"
+url = "https://www.tripadvisor.com/Hotels-g187147-oa30-Paris_Ile_de_France-Hotels.html"
 driver.google_get(url, bypass_cloudflare=True)
 
 
@@ -51,7 +51,7 @@ def go_to_next_page():
     """
     next_button_selector = 'a[data-smoke-attr="pagination-next-arrow"]'
     driver.click(next_button_selector)
-    time.sleep(4)  # Wait for 4 seconds to let the page load
+    time.sleep(1)  # Wait for 1 seconds to let the page load
     driver.scroll_to_bottom()  # Scroll to the bottom of the page
 
 # List to hold all the hostel links
